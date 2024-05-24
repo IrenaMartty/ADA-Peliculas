@@ -1,23 +1,43 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const apiKey = 'a0ccedd96b5d452d368fe1d3001410e2'
+const apiKey = 'a0ccedd96b5d452d368fe1d3001410e2';
 
 export default function useMovies() {
-    const [allMovies, setAllMovies] = useState([]);
+  const [popularMovies, setpopularMovies] = useState([]);
+  const [latestMovies, setLatestMovies] = useState([])
 
-
-async function getAllMovies() {
-    try{
-        const{ data } = await axios(`https://api.themoviedb.org/3/movie/11?api_key=${apiKey}`);
-        setAllMovies(data.results);
+  async function getPopularMovies() {
+    try {
+      const { data } = await axios(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`);
+      setpopularMovies(data.results); 
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}
+  }
+
+  async function getLatestMovies() {
+    try {
+      const { data } = await axios(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
+      setLatestMovies(data.results)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getPopularMovies();
+    getLatestMovies();
+  }, []);
+
+
 
   return {
-    allMovies,
-    getAllMovies
+    popularMovies,
+    getPopularMovies,
+    latestMovies,
+    getLatestMovies
+
+
   }
 }
