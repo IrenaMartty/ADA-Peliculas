@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import useMovies from '../hooks/useMovies';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import CardAllMovies from '../components/CardAllMovies';
-import { useNavigate } from 'react-router-dom';
+
 import Carusel from "../components/Carusel";
 
 
 
 export default function HomePage() {
-  const navigate = useNavigate();
+  
   const { popularMovies, getPopularMovies, latestMovies, getLatestMovies } = useMovies();
  
 

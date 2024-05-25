@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import useMovies from '../hooks/useMovies';
-import { Box, Container, Grid } from '@mui/material';
+import { Box, Container, Grid, Pagination } from '@mui/material';
 import CardAllMovies from '../components/CardAllMovies';
-import { useNavigate } from 'react-router-dom';
 
 export default function ContainLatestMovies() {
-  const { latestMovies, getLatestMovies} = useMovies()
+  const { latestMovies, getLatestMovies, page, changePage, totalPages } = useMovies();
+
+  const handleChange = (event, value) => {
+    changePage(value);
+  };
 
   useEffect(() => {
-    getLatestMovies();
-  }, []);
-
+    getLatestMovies(page);
+  }, [page, getLatestMovies]);
 
   return (
     <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
@@ -22,8 +24,17 @@ export default function ContainLatestMovies() {
             </Grid>
           ))}
         </Grid>
+        <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
+          <Pagination
+            count={totalPages}
+            page={page}
+            onChange={handleChange}
+            variant="outlined" 
+            color="primary" 
+            size="large"
+          />
+        </Box>
       </Container>
     </Box>
-  )
+  );
 }
-

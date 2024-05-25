@@ -19,7 +19,7 @@ function App() {
       <Route path="/latest" element= {<ContainLatestMovies/>}/>
       <Route path="/popular" element= {<ContainPopularMovies/>}/>
       <Route path="/search" element= {<SearchMovies/>}/>
-      <Route path="/detail" element= {<DetailMovies/>}/>
+      <Route path="/detail/:idMovie" element= {<DetailMovies/>}/>
      </Routes>
      <Footer/>
         

@@ -19,7 +19,7 @@ export default function Carusel(movie) {
 return (
       <Carousel activeIndex={index} onSelect={handleSelect}>
           {popularMovies.map((movie) => (
-              <Carousel.Item key={movie.id} style={{height: '500px',
+              <Carousel.Item key={movie.id} style={{
               width: '100%',
               objectFit: 'cover'}}>
                   <img
