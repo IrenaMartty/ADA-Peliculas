@@ -3,7 +3,8 @@ import useMovies from '../hooks/useMovies';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import CardAllMovies from '../components/CardAllMovies';
 import { useNavigate } from 'react-router-dom';
-import { BalanceOutlined } from '@mui/icons-material';
+import Carusel from "../components/Carusel";
+
 
 
 export default function HomePage() {
@@ -17,7 +18,8 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
+    <>    
+    <Carusel/>
     <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
     <Typography variant="h3" sx={{ color: "white", mb: 2 }}>Peliculas Populares</Typography>
       <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>

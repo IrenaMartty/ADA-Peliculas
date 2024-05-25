@@ -7,7 +7,6 @@ import ContainLatestMovies from "./views/ContainLatestMovies";
 import ContainPopularMovies from "./views/ContainPopularMovies";
 import DetailMovies from "./views/DetailMovies";
 import SearchMovies from "./views/SearchMovies";
-// import Carusel from "./components/Carusel";
 
 function App() {
   
@@ -15,7 +14,6 @@ function App() {
   return (
     <BrowserRouter>
      <Header/>
-     {/* <Carusel/> */}
      <Routes>
       <Route path="/" element= {<HomePage/>}/>
       <Route path="/latest" element= {<ContainLatestMovies/>}/>
