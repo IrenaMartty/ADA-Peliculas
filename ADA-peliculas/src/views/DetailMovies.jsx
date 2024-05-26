@@ -21,6 +21,7 @@ export default function DetailMovies() {
     });
   }, [idMovie, getMovieDetails, getTrailer]);
 
+  console.log(getTrailer);
   if (!movieDetails) return <div>Cargando...</div>;
   return (
     <Box
@@ -52,13 +53,13 @@ export default function DetailMovies() {
           />
           {trailerKey && (
             <IconButton
-            color='inherit' // or color='#fff'
-            aria-label='trailer'
-            onClick={() => window.open(`https://www.youtube.com/watch?v=${trailerKey}`, '_self')}
-            sx={{ position: 'absolute', bottom: '20px', right: '20px' }}
-          >
-            <PlayCircleOutlineIcon fontSize="large" />
-          </IconButton>
+              color='inherit'
+              aria-label='trailer'
+              onClick={() => window.open(`https://www.youtube.com/watch?v=${trailerKey}`, '_blank')} 
+              sx={{ position: 'absolute', bottom: '20px', right: '20px' }}
+            >
+              <PlayCircleOutlineIcon fontSize="large" />
+            </IconButton>
           )}
         </Box>
         <Box sx={{ flex: '1 1 auto' }}>

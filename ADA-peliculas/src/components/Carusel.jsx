@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import useMovies from '../hooks/useMovies';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+
 
 
 export default function Carusel(movie) {
@@ -34,7 +37,15 @@ return (
                         }}>
                       <h3>{movie.title}</h3>
                       <p>{movie.overview}</p>
+                      <Link to={`/detail/${movie.id}`}>
+                      <Button
+                      style= {{
+                        color: '#fff',
+                        fontWeight: 'bold'
+                      }}>VER MAS...</Button>
+                      </Link>
                   </Carousel.Caption>
+                  
               </Carousel.Item>
           ))}
       </Carousel>

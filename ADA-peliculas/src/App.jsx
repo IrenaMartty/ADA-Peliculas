@@ -7,6 +7,7 @@ import ContainLatestMovies from "./views/ContainLatestMovies";
 import ContainPopularMovies from "./views/ContainPopularMovies";
 import DetailMovies from "./views/DetailMovies";
 import SearchMovies from "./views/SearchMovies";
+// import FavoriteMovies from "./views/FavoriteMovies";
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
       <Route path="/popular" element= {<ContainPopularMovies/>}/>
       <Route path="/search" element= {<SearchMovies/>}/>
       <Route path="/detail/:idMovie" element= {<DetailMovies/>}/>
+      {/* <Route path="/favorite" element= {<FavoriteMovies/>}/> */}
      </Routes>
      <Footer/>
         

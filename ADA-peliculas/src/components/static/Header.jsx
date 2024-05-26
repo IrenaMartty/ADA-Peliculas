@@ -1,8 +1,8 @@
 import {Box, Button} from '@mui/material/';
-import { blue } from '@mui/material/colors';
-import HomePage from '../../views/HomePage';
-import ContainPopularMovies from '../../views/ContainPopularMovies';
 import { Link } from 'react-router-dom';
+import { IconButton } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+
 
 const buttonStyle = {
   color: 'white', 
@@ -18,6 +18,9 @@ export default function Header() {
       <Button variant="outlined" component= {Link} to="/latest" sx={buttonStyle}>ULTIMOS LANZAMIENTOS</Button>
       <Button variant="outlined" component= {Link} to="/popular" sx={buttonStyle}>POPULARES</Button>
       <Button variant="outlined" component= {Link} to="/search" sx={buttonStyle}>BUSCAR</Button>
+      <IconButton variant="outlined" component={Link} to="/favorite" sx={buttonStyle}>
+      <FavoriteBorderIcon />
+    </IconButton>
   </Box>
   )
 }

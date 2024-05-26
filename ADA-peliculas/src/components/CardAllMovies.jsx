@@ -4,9 +4,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+// import { FavoriteContext } from "../context/FavoriteContextProvider";
+
 
 export default function CardAllMovies({ movie }) {
   const [favourite, setFavourite] = useState (false)
+  // const { addFavorite, isFavorite, removeFavorite } = useContext(FavoriteContext);
 
   const handleFavouriteClick = () => {
     setFavourite ((favourite) => !favourite)
