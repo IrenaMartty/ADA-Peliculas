@@ -1,27 +1,47 @@
 import React, { createContext, useState } from "react";
 
-export const FavoritesContext = createContext();
+export const FavoriteContext = createContext();
 
-const FavoritesContextProvider = ({ children }) => {
+const FavoriteContextProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
 // Agrega el favorito
+    const addToFavorites =(movie)=> {
+      // console.log(movie)
+      setFavorites((favorites) => [...favorites, movie]);
 
-    const addFavorites =(movie)=> {
-      console.log(movie)
-      setFavorites([...favorites,movie])
     }
+
+// Remove el favorito
+const removeFromFavorites = (id) => {
+  setFavorites((favorites) => favorites.filter((favorite) => favorite.id !== id));
+};
+
+
+const isFavorite = (movie) => {
+  return favorites.some((fav) => fav.id === movie.id);
+};
+
+const allFavorites = () => {
+  return favorites.length;
+};
 
     const data = {
       favorites,
-      addFavorites
+      addToFavorites,
+      removeFromFavorites,
+      isFavorite,
+      allFavorites
+
     }
 
     return (
-    <FavoritesContext.Provider value={data}>
+    <>
+    <FavoriteContext.Provider value={{ favorites, addToFavorites, removeFromFavorites, isFavorite, allFavorites }}>
       {children}
-    </FavoritesContext.Provider>
+    </FavoriteContext.Provider>
+    </>
   );
 };
 
-export default FavoritesContextProvider;
+export default FavoriteContextProvider;

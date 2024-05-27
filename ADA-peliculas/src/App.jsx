@@ -7,12 +7,14 @@ import ContainLatestMovies from "./views/ContainLatestMovies";
 import ContainPopularMovies from "./views/ContainPopularMovies";
 import DetailMovies from "./views/DetailMovies";
 import SearchMovies from "./views/SearchMovies";
-// import FavoriteMovies from "./views/FavoriteMovies";
+import FavoriteMovies from "./views/FavoriteMovies";
+import FavoriteContextProvider from "./context/FavoriteContext"; 
+
 
 function App() {
-  
 
   return (
+     <FavoriteContextProvider>
     <BrowserRouter>
      <Header/>
      <Routes>
@@ -21,11 +23,11 @@ function App() {
       <Route path="/popular" element= {<ContainPopularMovies/>}/>
       <Route path="/search" element= {<SearchMovies/>}/>
       <Route path="/detail/:idMovie" element= {<DetailMovies/>}/>
-      {/* <Route path="/favorite" element= {<FavoriteMovies/>}/> */}
+      <Route path="/favorite" element= {<FavoriteMovies/>}/>
      </Routes>
      <Footer/>
-        
     </BrowserRouter>
+     </FavoriteContextProvider>
   )
 }
 

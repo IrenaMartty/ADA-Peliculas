@@ -1,39 +1,52 @@
-import React from 'react';
-import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import { FavoriteContext } from "../context/FavoriteContextProvider";
-
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  IconButton,
+} from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useState } from "react";
+import { useContext } from "react";
+import { FavoriteContext } from "../context/FavoriteContext";  
+import { Link } from "react-router-dom";
 
 export default function CardAllMovies({ movie }) {
-  const [favourite, setFavourite] = useState (false)
-  // const { addFavorite, isFavorite, removeFavorite } = useContext(FavoriteContext);
+  const { addToFavorites, isFavorite, removeFromFavorites } = useContext(FavoriteContext);
+  const [favourite, setFavourite] = useState(isFavorite(movie));
 
-  const handleFavouriteClick = () => {
-    setFavourite ((favourite) => !favourite)
-  }
 
+  const handleFavouriteClick = (e) => {
+    if (favourite) {
+      removeFromFavorites(movie.id);
+    } else {
+      addToFavorites(movie);
+    }
+    setFavourite(!favourite);
+  };
 
   return (
-    <Link to={`/detail/${movie.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-      <Card sx={{ maxWidth: 345, cursor: 'pointer' }}>
+    <Card sx={{ maxWidth: 300, cursor: "pointer" }}>
+      <Link
+        to={`/detail/${movie.id}`}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
         <CardMedia
           component="img"
-          height="140"
+          height="100%"
           image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" align="center" component="div">
             {movie.title}
           </Typography>
-          <IconButton onClick={(e) => { e.stopPropagation(); handleFavouriteClick(); }}>
-            {favourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-          </IconButton>
         </CardContent>
-      </Card>
-    </Link>
+      </Link>
+      <IconButton onClick={handleFavouriteClick}>
+        {favourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      </IconButton>
+    </Card>
   );
 }

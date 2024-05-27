@@ -1,13 +1,15 @@
-import { Grid, Container, Box } from "@mui/material";
+import { Grid, Container, Box, Typography } from "@mui/material";
 import { useContext } from "react";
 import CardAllMovies from "../components/CardAllMovies";
-import FavoritesContextProvider from "./context/FavoritesContext";
+import { FavoriteContext } from "../context/FavoriteContext"; 
 
 export default function FavoriteMovies() {
-  const { favorites } = useContext(FavoritesContextProvider);
+  const { favorites } = useContext(FavoriteContext); 
 
   return (
     <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
+      <Typography variant="h3" sx={{ color: "white", mb: 2 }}>Mis Peliculas Favoritas
+</Typography>
       <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
         <Grid container spacing={2}>
           {favorites.map((favorite) => (
