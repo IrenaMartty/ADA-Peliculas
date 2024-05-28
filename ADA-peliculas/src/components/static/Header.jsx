@@ -1,9 +1,10 @@
-import { Box, Button, Badge } from "@mui/material/";
+import { Box, Button, Badge, colors } from "@mui/material/";
 import { Link } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { FavoriteContext } from "../../context/FavoriteContext";
+import '@fontsource/nunito';
 
 const buttonStyle = {
   color: "white",
@@ -11,13 +12,54 @@ const buttonStyle = {
   margin: "4px",
 };
 
+// const headerStyle = {
+//   display: 'flex',
+//   alignItems: 'center', 
+//   justifyContent: 'space-between',
+//   margin: 0,
+//   backgroundColor: "rgba(0, 0, 0, 0.5)",
+//   padding: "8px",
+//   position: "absolute",
+//   top: 0,
+//   left: 0,
+//   width: "100%",
+//   zIndex: 1000,
+  
+// };
+
 export default function Header() {
   const navigate = useNavigate();
 
   const { allFavorites } = useContext(FavoriteContext);
   return (
-    <Box margin={0} bgcolor="gray" padding={1}>
-      <h1>ADA PELICULAS</h1>
+    <Box sx={{
+      display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        margin: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        padding: '8px',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        zIndex: 1000,
+        transition: 'background-color 0.3s ease-in-out', 
+        borderBottom: '0.5px solid white',
+        '@media (max-width: 600px)': {
+          flexDirection: 'column', 
+          justifyContent: 'center', 
+          textAlign: 'center', 
+          backgroundColor: 'black',
+          zIndex: 0,
+          position: 'relative',
+          width: 'flex'
+          
+      },
+    }} >
+    <h1 style={{ fontFamily: 'Nunito', color: 'white' }}>peliADA</h1>
+    <div>
       <Button variant="outlined" component={Link} to="/" sx={buttonStyle}>
         HOME
       </Button>
@@ -35,14 +77,15 @@ export default function Header() {
       <Button variant="outlined" component={Link} to="/search" sx={buttonStyle}>
         BUSCAR
       </Button>
+    </div>
+
       <Button
-        variant="contained"
-        color="error"
+        variant="text"
         onClick={() => navigate("/favorite")}
         size="large"
         endIcon={
-          <Badge badgeContent={allFavorites()} color="primary">
-            <FavoriteIcon color="action" />
+          <Badge badgeContent={allFavorites()} sx={{color: 'red'}}>
+            <FavoriteIcon sx={{color: 'white'}}/>
           </Badge>
         }
       ></Button>

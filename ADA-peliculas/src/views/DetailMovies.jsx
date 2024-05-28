@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useMovies from "../hooks/useMovies";
-import { Container, Typography, Box, IconButton } from "@mui/material";
+import { Container, Typography, Box, IconButton} from "@mui/material";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 export default function DetailMovies() {
   const { idMovie } = useParams();
-  const { movieDetails, getMovieDetails } = useMovies();
-  const { trailer, getTrailer } = useMovies();
-  const [trailerKey, setTrailerKey] = useState(null);
+  const { movieDetails, getMovieDetails, getTrailer } = useMovies();
+  const [trailer, setTrailer] = useState();
 
   useEffect(() => {
     getMovieDetails(idMovie);
     getTrailer(idMovie).then((trailerData) => {
-      if (trailerData && trailerData.key) {
-        setTrailerKey(trailerData.key);
+      if (trailerData && trailerData.results && trailerData.results.length > 0 && trailerData.results[0].key) {
+        setTrailer(trailerData.results[0].key);
       } else {
-        setTrailerKey(null);
+        setTrailer(null);
       }
     });
-  }, [idMovie, getMovieDetails, getTrailer]);
+  }, [idMovie]);
+
+  
 
   console.log(getTrailer);
   if (!movieDetails) return <div>Cargando...</div>;
@@ -38,6 +39,9 @@ export default function DetailMovies() {
         textAlign: 'left',
       }}
     >
+      {/* <IconButton onClick={handleFavouriteClick}>
+        {favourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      </IconButton> */}
       <Container sx={{
         display: 'flex',
         flexDirection: { xs: 'column', md: 'row' },
@@ -51,11 +55,11 @@ export default function DetailMovies() {
             alt={movieDetails.title}
             style={{ maxWidth: '100%', height: 'auto', borderRadius: '10px' }}
           />
-          {trailerKey && (
+          {trailer && (
             <IconButton
               color='inherit'
               aria-label='trailer'
-              onClick={() => window.open(`https://www.youtube.com/watch?v=${trailerKey}`, '_blank')} 
+              onClick={() => window.location.href = `https://www.youtube.com/watch?v=${trailer}`}
               sx={{ position: 'absolute', bottom: '20px', right: '20px' }}
             >
               <PlayCircleOutlineIcon fontSize="large" />

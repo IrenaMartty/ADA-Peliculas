@@ -19,7 +19,7 @@ export default function ContainPopularMovies() {
 
   return (
     <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
-      <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+      <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: '20px', marginTop: '100px' }}>
         <Grid container spacing={2}>
           {popularMovies.map((movie) => (
             <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
@@ -27,7 +27,7 @@ export default function ContainPopularMovies() {
             </Grid>
           ))}
         </Grid>
-        <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
           <Pagination
             count={totalPages}
             page={page}

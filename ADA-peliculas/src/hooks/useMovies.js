@@ -56,18 +56,18 @@ export default function useMovies() {
   }
 
   // Fetching trailer data
-  async function getTrailer(id) {
+  const getTrailer = async (id) => {
     try {
-      const { data } = await axios(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=${language}`);
-      if (data.results && data.results.length > 0) {
-        setTrailer(data.results[0]);
-      } else {
-        setTrailer(null);
-      }
+      const { data } = await axios(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`);
+      console.log("API response:", data);
+      return data; // Return the data fetched from the API call
     } catch (error) {
       console.log(error);
+      return null; // Return null if there's an error
     }
-  }
+  };
+
+  // Paginacion
 
   function changePage(newPage) {
     setPage(newPage);

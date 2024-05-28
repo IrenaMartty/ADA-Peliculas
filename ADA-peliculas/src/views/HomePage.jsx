@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import useMovies from '../hooks/useMovies';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import CardAllMovies from '../components/CardAllMovies';
-
 import Carusel from "../components/Carusel";
 
 

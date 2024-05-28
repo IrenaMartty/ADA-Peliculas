@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  IconButton,
-} from "@mui/material";
+import {Card,CardContent,CardMedia,Typography, IconButton} from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState } from "react";
@@ -47,6 +41,7 @@ export default function CardAllMovies({ movie }) {
       <IconButton onClick={handleFavouriteClick}>
         {favourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
       </IconButton>
+      
     </Card>
   );
 }
