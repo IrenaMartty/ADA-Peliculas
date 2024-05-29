@@ -16,7 +16,7 @@ function App() {
   return (
      <FavoriteContextProvider>
     <BrowserRouter>
-     <Header style={{ position: 'absolute', zIndex: 1 }} />
+     <Header/>
      <Routes>
       <Route path="/" element= {<HomePage/>}/>
       <Route path="/latest" element= {<ContainLatestMovies/>}/>
@@ -24,6 +24,7 @@ function App() {
       <Route path="/search" element= {<SearchMovies/>}/>
       <Route path="/detail/:idMovie" element= {<DetailMovies/>}/>
       <Route path="/favorite" element= {<FavoriteMovies/>}/>
+      <Route path="/error" element= {<Error/>}/>
      </Routes>
      <Footer/>
     </BrowserRouter>

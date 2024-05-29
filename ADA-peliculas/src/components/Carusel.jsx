@@ -20,15 +20,15 @@ export default function Carusel(movie) {
     };
   
 return (
-      <Carousel activeIndex={index} onSelect={handleSelect}>
-          {popularMovies.map((movie) => (
-              <Carousel.Item key={movie.id} style={{
-              width: '100%',
-              objectFit: 'cover'}}>
+      <Carousel activeIndex={index} onSelect={handleSelect} >
+          /{popularMovies.map((movie) => (
+              <Carousel.Item key={movie.id} style={{ height: '80vh' }}>
                   <img
                       className="d-block w-100"
                       src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
                       alt={movie.title}
+                      style={{ height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+
                   />
                   <Carousel.Caption style={{
                             backgroundColor: 'rgba(0, 0, 0, 0.5)', 

@@ -18,9 +18,9 @@ export default function HomePage() {
 
   return (
     <>    
+    <Box sx={{ backgroundColor: "black", minHeight: "90vh"}}>
     <Carusel/>
-    <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
-    <Typography variant="h3" sx={{ color: "white", mb: 2 }}>Peliculas Populares</Typography>
+    <Typography variant="h3" sx={{ color: "white", mb: 2, padding: 2 }}>Peliculas Populares</Typography>
       <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
         <Grid container spacing={2}>
           {popularMovies.map((movie) => (

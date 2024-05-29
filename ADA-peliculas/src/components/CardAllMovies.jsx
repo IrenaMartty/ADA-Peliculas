@@ -21,19 +21,21 @@ export default function CardAllMovies({ movie }) {
   };
 
   return (
-    <Card sx={{ maxWidth: 300, cursor: "pointer" }}>
+    <Card sx={{ maxWidth: 300, cursor: 'pointer', display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'}}>
       <Link
         to={`/detail/${movie.id}`}
-        style={{ textDecoration: "none", color: "inherit" }}
+        style={{ textDecoration: 'none', color: 'inherit' }}
       >
         <CardMedia
-          component="img"
-          height="100%"
+          component='img'
+          height='100%'
           image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
           alt={movie.title}
         />
         <CardContent>
-          <Typography gutterBottom variant="h6" align="center" component="div">
+          <Typography gutterBottom variant="h6" align="center" component="div" sx={{paddingTop:'2px', marginBottom:'0px'}}>
             {movie.title}
           </Typography>
         </CardContent>

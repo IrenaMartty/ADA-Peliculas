@@ -12,28 +12,13 @@ const buttonStyle = {
   margin: "4px",
 };
 
-// const headerStyle = {
-//   display: 'flex',
-//   alignItems: 'center', 
-//   justifyContent: 'space-between',
-//   margin: 0,
-//   backgroundColor: "rgba(0, 0, 0, 0.5)",
-//   padding: "8px",
-//   position: "absolute",
-//   top: 0,
-//   left: 0,
-//   width: "100%",
-//   zIndex: 1000,
-  
-// };
-
 export default function Header() {
   const navigate = useNavigate();
 
   const { allFavorites } = useContext(FavoriteContext);
   return (
     <Box sx={{
-      display: 'flex',
+        display: 'flex',
         flexDirection: 'row',
         alignItems: 'center', 
         justifyContent: 'space-between', 
@@ -48,6 +33,9 @@ export default function Header() {
         transition: 'background-color 0.3s ease-in-out', 
         borderBottom: '0.5px solid white',
         '@media (max-width: 600px)': {
+          position: 'relative',
+          zIndex: 'hidden',
+          top: 0,
           flexDirection: 'column', 
           justifyContent: 'center', 
           textAlign: 'center', 
@@ -58,7 +46,10 @@ export default function Header() {
           
       },
     }} >
+      <div>
+    <img src="" alt="" />
     <h1 style={{ fontFamily: 'Nunito', color: 'white' }}>peliADA</h1>
+      </div>
     <div>
       <Button variant="outlined" component={Link} to="/" sx={buttonStyle}>
         HOME

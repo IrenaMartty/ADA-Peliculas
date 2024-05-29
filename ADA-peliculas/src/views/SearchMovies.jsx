@@ -14,21 +14,23 @@ export default function SearchMovies() {
 
   return (
     <>
-    <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
+<Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2, display: "flex", flexDirection: "column", alignItems: "center" }}>
       <input 
       type="text"
       placeholder="Ingresa el nombre de la pelicula"
       value={search}
       onChange={(e)=> setSearch(e.target.value)}
-      style={{ width: '100%', padding: '10px', marginBottom: '20px', marginTop: '100px'}}
+      style={{ width: '60%', padding: '10px', marginBottom: '20px', marginTop: '100px'}}
       />
     
-    <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
+    <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: '20px', marginTop: '100px' }}>
+      <Grid container spacing={2}>
       {allMovies.map((movie)=> (
         <Grid item key={movie.id} xs={12} sm={6} md={4} lg={3}>
         <CardAllMovies movie={movie} />
       </Grid>
       ))}
+      </Grid>
     </Container>
     </Box>
     </>

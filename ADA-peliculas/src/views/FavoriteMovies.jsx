@@ -8,9 +8,9 @@ export default function FavoriteMovies() {
 
   return (
     <Box sx={{ backgroundColor: "black", minHeight: "90vh", padding: 2 }}>
-      <Typography variant="h3" sx={{ color: "white", mb: 2 }}>Mis Peliculas Favoritas
+      <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: '20px', marginTop: '100px' }}>
+      <Typography variant="h3" sx={{ color: "white", mb: 2}}>Mis Peliculas Favoritas
 </Typography>
-      <Container sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
         <Grid container spacing={2}>
           {favorites.map((favorite) => (
             <Grid item key={favorite.id} xs={12} sm={6} md={4} lg={3}>
