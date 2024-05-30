@@ -5,55 +5,50 @@ export const FavoriteContext = createContext();
 
 const FavoriteContextProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
-  const {getLocalStorage, updateLocalStorage } = useLocalStorage()
+  const { getLocalStorage, updateLocalStorage } = useLocalStorage("favoriteMovies");
 
-//Montaje
-useEffect(()=> {
- setFavorites(getLocalStorage(favorites))
-}, [])
+  // Montaje
+  useEffect(() => {
+    setFavorites(getLocalStorage());
+  }, []);
 
-//Actualizacion
-useEffect(() => {
-if (favorites != null) {
-  localStorage.setItem("favorite", JSON.stringify(favorites))
-} 
-}, [favorites])
-
-// Agrega el favorito
-    const addToFavorites =(movie)=> {
-      // console.log(movie)
-      setFavorites((favorites) => [...favorites, movie]);
+  // Actualizacion
+  useEffect(() => {
+    if (favorites != null) {
+      updateLocalStorage(favorites);
     }
+  }, [favorites]);
 
-// Remove el favorito
-const removeFromFavorites = (id) => {
-  setFavorites((favorites) => favorites.filter((favorite) => favorite.id !== id));
-};
+  // Agrega el favorito
+  const addToFavorites = (movie) => {
+    setFavorites((favorites) => [...favorites, movie]);
+  };
 
+  // Remove el favorito
+  const removeFromFavorites = (id) => {
+    setFavorites((favorites) =>
+      favorites.filter((favorite) => favorite.id !== id)
+    );
+  };
 
-const isFavorite = (movie) => {
-  return favorites.some((fav) => fav.id === movie.id);
-};
+  const isFavorite = (movie) => {
+    return favorites.some((fav) => fav.id === movie.id);
+  };
 
-const allFavorites = () => {
-  return favorites.length;
-};
+  const allFavorites = () => {
+    return favorites.length;
+  };
 
-    const data = {
-      favorites,
-      addToFavorites,
-      removeFromFavorites,
-      isFavorite,
-      allFavorites
+  const data = {
+    favorites,
+    addToFavorites,
+    removeFromFavorites,
+    isFavorite,
+    allFavorites,
+  };
 
-    }
-
-    return (
-    <>
-    <FavoriteContext.Provider value={data}>
-      {children}
-    </FavoriteContext.Provider>
-    </>
+  return (
+    <FavoriteContext.Provider value={data}>{children}</FavoriteContext.Provider>
   );
 };
 
