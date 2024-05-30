@@ -1,7 +1,7 @@
 # peliADA
 <img width="893" alt="Screenshot 2024-05-30 at 3 08 57 AM" src="https://github.com/IrenaMartty/ADA-Peliculas/assets/130612088/e4325a6a-d8fe-45cc-80b8-92ab584aa302">
 
-## Características
+## Características:
 
 **Encabezado:** Con navegación.
 
